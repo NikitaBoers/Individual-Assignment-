@@ -2,7 +2,7 @@ import json
 filename = 'conflict_data_full_lined.json'
 
 russia_conflicts=[]
-turkey_conlficts=[]
+turkey_conflicts=[]
 with open(filename) as file:
 
     for line in json.load(file):
@@ -12,18 +12,22 @@ with open(filename) as file:
             russia_conflicts.append(type_of_violence_russia)
         if 'Turkey' in country:
             type_of_violence_turkey=line['type_of_violence']
-            turkey_conlficts.append(type_of_violence_turkey)
+            turkey_conflicts.append(type_of_violence_turkey)
             
 
 print(russia_conflicts)
-print(turkey_conlficts)
-str_russia_conflicts=str(russia_conflicts)
-str_turkey_conflicts=str(turkey_conlficts)
-with open ('russia_conflicts. csv ', 'w') as file :
-    file . write (str_russia_conflicts) # the \n is for newline
+print(turkey_conflicts)
+
+with open ('russia_conflicts.csv ', 'w') as file :
+    file.write('russia')
+    for entry in russia_conflicts:
+        file.write(str(entry)) 
 
 with open ('turkey_conflicts.csv', 'w') as file:
-    file.write(str_turkey_conflicts)
+    file.write('turkey')
+    for entry in turkey_conflicts:
+        file.write(str(entry))
 
+        
         
 
